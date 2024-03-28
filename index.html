@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Đăng nhập</title>
     <meta charset="utf-8">
@@ -19,6 +20,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <h2>Đăng nhập</h2>
@@ -29,7 +31,12 @@
         <button id="loginButton">Đăng nhập</button>
         <div id="errorMessage" class="error-message"></div>
         <br>
-        <a  href="register.html">Đăng ký tài khoản</a>
+        <a href="register.html">Đăng ký tài khoản</a>
+
+        <p>
+            email: ab@cd <br>
+            password: 1234abcd
+        </p>
     </div>
 
     <script>
@@ -43,7 +50,7 @@
             var password = passwordInput.value;
 
             // Kiểm tra tài khoản và mật khẩu
-            if (email === 'abcd' && password === '1234abcd') {
+            if (email === 'ab@cd' && password === '1234abcd') {
                 window.location.href = 'index_0.html'; // Chuyển đến trang index_0.html
             } else {
                 errorMessage.innerHTML = 'Tài khoản hoặc mật khẩu không chính xác.';
@@ -51,11 +58,12 @@
         }
 
         loginButton.addEventListener('click', login);
-        passwordInput.addEventListener('keydown', function(event) {
+        passwordInput.addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 login();
             }
         });
     </script>
 </body>
+
 </html>
