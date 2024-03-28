@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Quản lý sách</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="toolbar">
+        <button id="addButton">Thêm</button>
+        <a href="index.html">Đăng xuất</a>
+    </div>
+
+    <div id="bookList">
+    </div>
+
+    <script>
+        function deleteBook(bookId) {
+            var bookElement = document.getElementById(bookId);
+            bookElement.parentNode.removeChild(bookElement);
+        }
+
+        function editBook(bookId) {
+        }
+
+        var bookList = document.getElementById('bookList');
+        function addBook(bookId, imagePath, title, author, year) {
+            var bookContainer = document.createElement('div');
+            bookContainer.id = bookId;
+            bookContainer.className = 'book-container';
+
+            var bookImage = document.createElement('img');
+            bookImage.src = imagePath;
+            bookImage.alt = 'Book Image';
+            bookImage.className = 'book-image';
+            bookContainer.appendChild(bookImage);
+
+            var bookInfo = document.createElement('div');
+            bookInfo.className = 'book-info';
+
+            var titleElement = document.createElement('p');
+            var titleStrong = document.createElement('strong');
+            titleStrong.innerHTML = 'Tác phẩm: ';
+            titleElement.appendChild(titleStrong);
+            titleElement.innerHTML += title;
+            bookInfo.appendChild(titleElement);
+
+            var authorElement = document.createElement('p');
+            var authorStrong = document.createElement('strong');
+            authorStrong.innerHTML = 'Tác giả: ';
+            authorElement.appendChild(authorStrong);
+            authorElement.innerHTML += author;
+            bookInfo.appendChild(authorElement);
+
+            var yearElement = document.createElement('p');
+            var yearStrong = document.createElement('strong');
+            yearStrong.innerHTML = 'Năm phát hành: ';
+            yearElement.appendChild(yearStrong);
+            yearElement.innerHTML += year;
+            bookInfo.appendChild(yearElement);
+
+            bookContainer.appendChild(bookInfo);
+
+            var bookActions = document.createElement('div');
+            bookActions.className = 'book-actions';
+
+            var deleteButton = document.createElement('button');
+            deleteButton.innerHTML = 'Xóa';
+            deleteButton.addEventListener('click', function () {
+                deleteBook(bookId);
+            });
+            bookActions.appendChild(deleteButton);
+
+            var editButton = document.createElement('button');
+            editButton.innerHTML = 'Sửa';
+            editButton.addEventListener('click', function () {
+                editBook(bookId);
+            });
+            bookActions.appendChild(editButton);
+
+            bookContainer.appendChild(bookActions);
+
+            bookList.appendChild(bookContainer);
+        }
+        addBook('book1', 'img_1.png', 'Sách 1', 'Tác giả 1', '2022');
+        addBook('book2', 'img_2.png', 'Sách 2', 'Tác giả 2', '2023');
+        addBook('book3', 'img_3.png', 'Sách 3', 'Tác giả 3', '2024');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng nhập</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+    <style>
+        body {
+            font-family: montserrat;
+            color: rgb(0, 0, 0);
+            background-color: #e9e9e9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Đăng nhập</h2>
+        <input type="text" id="emailInput" placeholder="Nhập email" autofocus>
+        <br>
+        <input type="password" id="passwordInput" placeholder="Nhập mật khẩu">
+        <br>
+        <button id="loginButton">Đăng nhập</button>
+        <div id="errorMessage" class="error-message"></div>
+        <br>
+        <a  href="register.html">Đăng ký tài khoản</a>
+    </div>
+
+    <script>
+        var emailInput = document.getElementById('emailInput');
+        var passwordInput = document.getElementById('passwordInput');
+        var loginButton = document.getElementById('loginButton');
+        var errorMessage = document.getElementById('errorMessage');
+
+        function login() {
+            var email = emailInput.value;
+            var password = passwordInput.value;
+
+            // Kiểm tra tài khoản và mật khẩu
+            if (email === 'abcd' && password === '1234abcd') {
+                window.location.href = 'index_0.html'; // Chuyển đến trang index_0.html
+            } else {
+                errorMessage.innerHTML = 'Tài khoản hoặc mật khẩu không chính xác.';
+            }
+        }
+
+        loginButton.addEventListener('click', login);
+        passwordInput.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                login();
+            }
+        });
+    </script>
+</body>
+</html>
